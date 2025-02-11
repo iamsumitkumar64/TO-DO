@@ -7,41 +7,45 @@ document.getElementById("area").addEventListener("keypress", function (event) {
     }
 });
 function create() {
-    let div = document.createElement("div");//CREATE DIV
-    document.getElementById("list").appendChild(div);//APPEND DIV
-    div.style.display = "flex";//DESIGN DIV
-    div.style.alignItems = "center"; // Add this line to vertically center elements
+    if (document.getElementById("area").value == "") {
+        window.alert("Input Field is Empty");
+    } else {
+        let div = document.createElement("div");//CREATE DIV
+        document.getElementById("list").appendChild(div);//APPEND DIV
+        div.style.display = "flex";//DESIGN DIV
+        div.style.alignItems = "center"; // Add this line to vertically center elements
 
-    let para = document.createElement("p");//CREATE PARAGRAPGH
-    let text = document.getElementById("area").value;
-    para.innerHTML = text;//DESIGN PARAGRAPGH
-    para.style.fontSize = "1.5em"; // Use em units instead of rem
-    para.style.flexGrow = "1"; // Make paragraph take up available space
+        let para = document.createElement("p");//CREATE PARAGRAPGH
+        let text = document.getElementById("area").value;
+        para.innerHTML = text;//DESIGN PARAGRAPGH
+        para.style.fontSize = "2vmax"; // Use em units instead of rem
+        para.style.flexGrow = "1"; // Make paragraph take up available space
 
-    let check = document.createElement("input");//CREATE CHECKBOX
-    check.type = "checkbox";//DESIGN CHECKBOX
-    check.style.width = "2em"; // Use em units instead of vw
-    check.style.height = "2em"; // Use em units instead of vh
-    check.style.margin = "0 0.5em"; // Add some margin to create space
+        let check = document.createElement("input");//CREATE CHECKBOX
+        check.type = "checkbox";//DESIGN CHECKBOX
+        check.style.width = "3vmax"; 
+        check.style.height = "3vmax";
+        check.style.margin = "0 0.5em"; // Add some margin to create space
 
-    let cross = document.createElement("button");//CREATE CROSS TICK
-    cross.style.backgroundImage = "URL('cross.png')";//DESIGN CROSS TICK
-    cross.style.backgroundSize = "100% 100%";
-    cross.style.width = "2em"; // Use em units instead of vw
-    cross.style.height = "2em"; // Use em units instead of vh
-    cross.style.margin = "0 0.5em"; // Add some margin to create space
+        let cross = document.createElement("button");//CREATE CROSS TICK
+        cross.style.backgroundImage = "URL('cross.png')";//DESIGN CROSS TICK
+        cross.style.backgroundSize = "100% 100%";
+        cross.style.width = "3vmax"; 
+        cross.style.height = "3vmax";
+        cross.style.margin = "0 0.5em"; // Add some margin to create space
 
-    div.appendChild(para);//APPEND PARAGRAPH
-    div.appendChild(check);//APPEND CHECKBOX
-    div.appendChild(cross);//APPEND CROSS TICK
+        div.appendChild(para);//APPEND PARAGRAPH
+        div.appendChild(check);//APPEND CHECKBOX
+        div.appendChild(cross);//APPEND CROSS TICK
 
-    check.onclick = function () {
-        if (check.checked) {    //MAKE WORK DONE AND LEAVE MARK ON IT
-            para.style.textDecoration = "line-through";
-            check.disabled = true;  //DISABLED AGAIN CHECKBOX
+        check.onclick = function () {
+            if (check.checked) {    //MAKE WORK DONE AND LEAVE MARK ON IT
+                para.style.textDecoration = "line-through";
+                check.disabled = true;  //DISABLED AGAIN CHECKBOX
+            }
+        };
+        cross.onclick = function () {   //DELETE A WORK THAT IS DONE OR USER DON'T WANT
+            this.parentNode.parentNode.removeChild(this.parentNode);
         }
-    };
-    cross.onclick = function () {   //DELETE A WORK THAT IS DONE OR USER DON'T WANT
-        this.parentNode.parentNode.removeChild(this.parentNode);
     }
 };

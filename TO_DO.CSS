@@ -1,13 +1,18 @@
+body{
+    color: white;
+    background-color: rgb(0, 3, 49);
+    font-size: 2.5vmin;
+    font-style: italic;
+    font-weight: 900;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
 #main {
-    background-color: white;
+    /* background-color: white; */
     display: flex;
     flex-direction: column;
 }
 
 h1 {
-    font-style: italic;
-    font-weight: 900;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
     text-align: center;
     text-shadow: 2px 2px 3px orange;
     animation-name: text;
@@ -19,22 +24,27 @@ h1 {
 #one {
     display: flex;
     justify-content: center;
+    margin-bottom: 1vmax;
 }
 
 #two {
     /* width: 40vw; */
     /* height: 131vh; */
     /* margin: 3vb; */
-    background-color: rgb(255, 179, 80);
+    background-color: rgb(0, 55, 77);
 }
-
 #area {
+    width: 100%;
     color: white;
     background-color: rgb(24, 27, 43);
+}
+
+#area::placeholder {
+    font-size: 2.5vmin;
     font-style: italic;
     font-weight: 900;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 1.5rem;
+    color: white;
 }
 
 #list {
@@ -42,18 +52,12 @@ h1 {
     height: 80vh; */
     /* display: flex;
     justify-content: space-between; */
-    font-style: italic;
-    font-weight: 900;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    text-decoration: underline;
+    /* text-decoration: underline; */
     cursor: pointer;
 }
 
 div>h1,
-p {
-    font-style: italic;
-    font-weight: 900;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+marquee {
     text-shadow: 2px 2px 3px orange;
     animation-name: text;
     animation-duration: 3s;
@@ -75,14 +79,18 @@ p {
 }
 
 #btn {
-    width: 6vmax;
-    height: 6vmax;
+    width: 5vmax;
+    height: 5vmax;
+    transition: all ease-out 1s;
     border-radius: 0.3vmax;
-    background-image: url("add.png");
+    background-image: url("click.gif");
     background-size: 100% 100%;
+    object-fit: contain;
+    -webkit-filter: invert(100%);
+    filter: invert(90%);
 }
 
 #btn:hover {
-    -webkit-filter: invert(100%);
-    filter: invert(90%);
+    -webkit-filter: invert(0);
+    filter: invert(0);
 }
