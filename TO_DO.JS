@@ -1,51 +1,82 @@
+let tskdata = [];
+let count = 1;
+let id;
+let msg;
+let status = "Pending";
+
 document.getElementById("area").addEventListener("keypress", function (event) {
     if (event.keyCode === 13) {
         create();
         document.getElementById("area").value = "";
-        // let text = document.getElementById("area").value;
-        // document.getElementById("list").innerHTML = text;
+        console.log(tskdata);
     }
 });
+
 function create() {
     if (document.getElementById("area").value == "") {
         window.alert("Input Field is Empty");
     } else {
-        let div = document.createElement("div");//CREATE DIV
-        document.getElementById("list").appendChild(div);//APPEND DIV
-        div.style.display = "flex";//DESIGN DIV
-        div.style.alignItems = "center"; // Add this line to vertically center elements
+        let div = document.createElement("div");
+        div.style.display = "flex";
+        div.style.alignItems = "center";
+        div.style.backgroundColor = "rgb(54, 54, 54)";
+        div.style.borderRadius = "1vmax";
+        div.style.marginBottom = "0.5em";
 
-        let para = document.createElement("p");//CREATE PARAGRAPGH
-        let text = document.getElementById("area").value;
-        para.innerHTML = text;//DESIGN PARAGRAPGH
-        para.style.fontSize = "2vmax"; // Use em units instead of rem
-        para.style.flexGrow = "1"; // Make paragraph take up available space
+        let para = document.createElement("p");
+        para.innerHTML = document.getElementById("area").value;
+        para.style.fontSize = "2vmax";
+        para.style.flexGrow = "1"; 
 
-        let check = document.createElement("input");//CREATE CHECKBOX
-        check.type = "checkbox";//DESIGN CHECKBOX
-        check.style.width = "3vmax"; 
+        let check = document.createElement("input");
+        check.type = "checkbox";
+        check.style.width = "3vmax";
         check.style.height = "3vmax";
-        check.style.margin = "0 0.5em"; // Add some margin to create space
+        check.style.margin = "0 0.5em";
 
-        let cross = document.createElement("button");//CREATE CROSS TICK
-        cross.style.backgroundImage = "URL('cross.png')";//DESIGN CROSS TICK
+        let cross = document.createElement("button");
+        cross.style.backgroundImage = "URL('cross.png')";
         cross.style.backgroundSize = "100% 100%";
-        cross.style.width = "3vmax"; 
+        cross.style.width = "3vmax";
         cross.style.height = "3vmax";
-        cross.style.margin = "0 0.5em"; // Add some margin to create space
+        cross.style.margin = "0 0.5em";
 
-        div.appendChild(para);//APPEND PARAGRAPH
-        div.appendChild(check);//APPEND CHECKBOX
-        div.appendChild(cross);//APPEND CROSS TICK
+
+        let edit = document.createElement("button");
+        edit.innerText = "Edit";
+        edit.id = "edit";
+        edit.style.margin = "0 0.5em";
+
+        div.appendChild(para);
+        div.appendChild(edit);
+        div.appendChild(check);
+        div.appendChild(cross);
+        document.getElementById("list").appendChild(div);
+
+        let task = { id: count, msg: document.getElementById("area").value, status: "Pending" };
+
+        tskdata.push(task);
 
         check.onclick = function () {
-            if (check.checked) {    //MAKE WORK DONE AND LEAVE MARK ON IT
+            if (check.checked) {
                 para.style.textDecoration = "line-through";
-                check.disabled = true;  //DISABLED AGAIN CHECKBOX
+                task.status = "Completed";
+                check.disabled = true;
             }
         };
-        cross.onclick = function () {   //DELETE A WORK THAT IS DONE OR USER DON'T WANT
-            this.parentNode.parentNode.removeChild(this.parentNode);
+
+        cross.onclick = function () {
+            this.parentNode.remove();
         }
+
+        edit.onclick = function () {
+            let para = this.parentNode.querySelector('p');
+            let newText = prompt("Edit New Job =", para.innerHTML);
+            if (newText !== null && newText.trim() !== "") {
+                para.innerHTML = newText;
+            }
+        }
+
+        count++;
     }
 };
