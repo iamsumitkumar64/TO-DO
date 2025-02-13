@@ -1,8 +1,4 @@
 let tskdata = [];
-let count = 1;
-let id;
-let msg;
-let status = "Pending";
 
 document.getElementById("area").addEventListener("keypress", function (event) {
     if (event.keyCode === 13) {
@@ -17,35 +13,29 @@ function create() {
         window.alert("Input Field is Empty");
     } else {
         let div = document.createElement("div");
-        div.style.display = "flex";
-        div.style.alignItems = "center";
-        div.style.backgroundColor = "rgb(54, 54, 54)";
-        div.style.borderRadius = "1vmax";
-        div.style.marginBottom = "0.5em";
+        div.setAttribute("style", "display: flex; align-items: center; background-color: rgb(36, 36, 36); border-radius: 1vmax; margin-bottom: 0.5em;transition:all ease 1s;");
+        div.addEventListener("mouseover", () => {
+            div.style.backgroundColor = "rgb(50,50,50)";
+        })
+        div.addEventListener("mouseout", () => {
+            div.style.backgroundColor = "rgb(36,36,36)";
+        })
 
         let para = document.createElement("p");
         para.innerHTML = document.getElementById("area").value;
-        para.style.fontSize = "2vmax";
-        para.style.flexGrow = "1"; 
+        para.setAttribute("style", "width:60%; height:auto; font-size: 1.7vmax; flex-grow: 1; overflow: hidden; white-space: normal; word-wrap: break-word;");
 
         let check = document.createElement("input");
         check.type = "checkbox";
-        check.style.width = "3vmax";
-        check.style.height = "3vmax";
-        check.style.margin = "0 0.5em";
+        check.setAttribute("style", "width: 3vmax; height: 3vmax; margin: 0 0.5em; border-radius: 1vmax; cursor:pointer;");
 
         let cross = document.createElement("button");
-        cross.style.backgroundImage = "URL('cross.png')";
-        cross.style.backgroundSize = "100% 100%";
-        cross.style.width = "3vmax";
-        cross.style.height = "3vmax";
-        cross.style.margin = "0 0.5em";
-
+        cross.setAttribute("style", "background-image: url('cross.png'); background-size: 100% 100%; width: 3vmax; height: 3vmax; margin: 0 0.5em; cursor:pointer;");
 
         let edit = document.createElement("button");
         edit.innerText = "Edit";
         edit.id = "edit";
-        edit.style.margin = "0 0.5em";
+        edit.setAttribute("style", "margin: 0 0.5em; cursor:pointer;");
 
         div.appendChild(para);
         div.appendChild(edit);
@@ -53,9 +43,7 @@ function create() {
         div.appendChild(cross);
         document.getElementById("list").appendChild(div);
 
-        let task = { id: count, msg: document.getElementById("area").value, status: "Pending" };
-
-        tskdata.push(task);
+        let task = { id: tskdata.length, msg: document.getElementById("area").value, status: "Pending" };
 
         check.onclick = function () {
             if (check.checked) {
@@ -67,16 +55,22 @@ function create() {
 
         cross.onclick = function () {
             this.parentNode.remove();
+            tskdata = tskdata.filter(elem => elem.msg != para.innerText);
+            tskdata.forEach((elem, index) => {
+                elem.id = index;
+            });
         }
 
         edit.onclick = function () {
-            let para = this.parentNode.querySelector('p');
-            let newText = prompt("Edit New Job =", para.innerHTML);
+            let this_para = this.parentNode.querySelector('p');
+            document.getElementById("area").value = para.innerText;
+            let newText = prompt("Edit New Job =", para.innerText);
             if (newText !== null && newText.trim() !== "") {
-                para.innerHTML = newText;
+                this_para.innerHTML = newText;
+                task.msg = newText;
             }
         }
 
-        count++;
+        tskdata.push(task);
     }
 };

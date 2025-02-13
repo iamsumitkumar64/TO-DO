@@ -1,26 +1,26 @@
 body {
     color: #EAEAEA;
-    background-color: #1A1A2E; 
-    font-size: 2.5vmin;
+    background-color: #1A1A2E;
+    font-size: 2vmin;
     font-style: italic;
     font-weight: 900;
-    font-family: 'Arial', sans-serif; 
+    font-family: 'Arial', sans-serif;
 }
 
 #main {
-    width: 60%;
+    width: 70%;
     height: auto;
     display: flex;
     flex-direction: column;
     margin: auto;
     box-shadow: 0px 0px 10px rgba(0, 123, 255, 0.5);
-    background-color: #162447; 
+    background-color: #162447;
     border-radius: 1vmax;
 }
 
 h1 {
     text-align: center;
-    text-shadow: 2px 2px 5px rgba(255, 165, 0, 0.7); 
+    text-shadow: 2px 2px 5px rgba(255, 165, 0, 0.7);
 }
 
 #one {
@@ -31,9 +31,9 @@ h1 {
 
 #area {
     width: 100%;
-    color: #EAEAEA; 
+    color: #EAEAEA;
     background-color: #0F3460;
-    caret-color: #FF6F61; 
+    caret-color: #FF6F61;
     border-radius: 1vmax;
 }
 
@@ -43,13 +43,13 @@ h1 {
     font-style: italic;
     font-weight: 900;
     font-family: 'Arial', sans-serif;
-    color: #B0BEC5; 
+    color: #B0BEC5;
 }
 
 #list {
     margin-top: 5%;
-    cursor: pointer;
-    color: #EAEAEA; 
+    /* cursor: pointer; */
+    color: #EAEAEA;
 }
 
 #btn {
@@ -58,21 +58,28 @@ h1 {
     transition: all ease-out .5s;
     border-radius: 1vmax;
     background-image: url("click.gif");
-    background-size: cover; 
-    filter:invert(0%);
+    background-size: cover;
+    filter: invert(0%);
 }
 
 #btn:hover {
-    filter:invert(100%);
+    filter: invert(100%);
 }
 
 #edit {
-    color: #EAEAEA; 
-    background-color: #0F3460; 
+    color: #EAEAEA;
+    background-color: #0F3460;
     font-size: 2.5vmin;
     font-style: italic;
     font-weight: 900;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Arial', sans - serif;
     padding: 10px;
-    border-radius: 1vmax; 
+    border-radius: 1vmax;
+}
+
+@media only screen and (max-width: 1000px) {
+    #main {
+        width: 90%;
+        height: auto;
+    }
 }
