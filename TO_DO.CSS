@@ -43,7 +43,36 @@ h1 {
     font-style: italic;
     font-weight: 900;
     font-family: 'Arial', sans-serif;
-    color: #B0BEC5;
+    color: rgb(212, 212, 212);
+}
+
+#area:focus::placeholder {
+    color: transparent;
+}
+
+select {
+    width: fit-content;
+    height: auto;
+    color: white;
+    background-color: transparent;
+    border: 1px solid white;
+    border-radius: 1vmax;
+    margin: auto;
+    padding: .4vmax;
+    font-size: 2.5vmin;
+    font-style: italic;
+    font-weight: 900;
+    font-family: 'Arial', sans-serif;
+}
+
+select>option {
+    color: white;
+    background-color: #0F3460;
+    padding: .4vmax;
+    font-size: 2.5vmin;
+    font-style: italic;
+    font-weight: 900;
+    font-family: 'Arial', sans-serif;
 }
 
 #list {
