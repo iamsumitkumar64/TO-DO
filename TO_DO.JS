@@ -38,7 +38,7 @@ function create() {
 
         let check = document.createElement("input");
         check.type = "checkbox";
-        check.setAttribute("style", "width: 3vmax; height: 3vmax; margin: 0 0.5em; border-radius: 50%; cursor:pointer;");
+         check.setAttribute("style", "width: 3vmax; height: 3vmax; margin: 0 0.5em; border-radius: 50%; cursor:pointer;");
 
         let cross = document.createElement("button");
         cross.setAttribute("style", "background-image: url('cross.png'); background-size: 100% 100%; width: 3vmax; height: 3vmax; margin: 0 0.5em; cursor:pointer;");
