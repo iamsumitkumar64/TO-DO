@@ -1,6 +1,6 @@
 body {
-    color: #EAEAEA;
-    background-color: #1A1A2E;
+    color: #eaeaea;
+    background-color: #001835;
     font-size: 2vmin;
     font-style: italic;
     font-weight: 900;
@@ -14,7 +14,7 @@ body {
     flex-direction: column;
     margin: auto;
     box-shadow: 0px 0px 10px rgba(0, 123, 255, 0.5);
-    background-color: #162447;
+    background-color: #0F3460;
     border-radius: 1vmax;
 }
 
@@ -32,22 +32,24 @@ h1 {
 #area {
     width: 100%;
     color: #EAEAEA;
+    font-size: 2vmax;
     background-color: #0F3460;
     caret-color: #FF6F61;
     border-radius: 1vmax;
 }
 
 #area::placeholder {
+    color: rgb(255, 238, 86);
     text-align: center;
     font-size: 2.5vmin;
     font-style: italic;
     font-weight: 900;
     font-family: 'Arial', sans-serif;
-    color: rgb(212, 212, 212);
 }
 
 #area:focus::placeholder {
     color: transparent;
+    border-color: transparent;
 }
 
 select {
@@ -76,9 +78,12 @@ select>option {
 }
 
 #list {
-    margin-top: 5%;
+    max-height: 52vh;
+    margin-top: 3%;
     /* cursor: pointer; */
     color: #EAEAEA;
+    overflow: auto;
+    scrollbar-width: none;
 }
 
 #btn {
@@ -110,5 +115,9 @@ select>option {
     #main {
         width: 90%;
         height: auto;
+    }
+
+    #list {
+        max-height: 70vh;
     }
 }

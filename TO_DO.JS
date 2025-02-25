@@ -8,6 +8,15 @@ document.getElementById("area").addEventListener("keypress", function (event) {
     }
 });
 
+let prev_data = JSON.parse(localStorage.getItem("todo"));
+console.log(prev_data);
+if (prev_data.length > 0) {
+    prev_data.forEach(task => {
+        console.log(task);
+        filterdiv(task);
+    });
+}
+
 function create() {
     if (document.getElementById("area").value == "") {
         window.alert("Input Field is Empty");
@@ -55,6 +64,7 @@ function create() {
                 para.style.textDecoration = "none";
                 task.status = "Pending";
             }
+            localStorage.setItem("todo", JSON.stringify(tskdata))
         };
 
         cross.onclick = function () {
@@ -63,6 +73,7 @@ function create() {
             tskdata.forEach((elem, index) => {
                 elem.id = index;
             });
+            localStorage.setItem("todo", JSON.stringify(tskdata))
         }
 
         edit.onclick = function () {
@@ -72,6 +83,7 @@ function create() {
                 this_para.innerHTML = newText;
                 task.msg = newText;
             }
+            localStorage.setItem("todo", JSON.stringify(tskdata))
         }
 
         tskdata.push(task);
@@ -99,7 +111,9 @@ function create() {
             }
         })
     }
+    localStorage.setItem("todo", JSON.stringify(tskdata))
 };
+
 function filterdiv(task) {
     let div = document.createElement("div");
     div.setAttribute("style", "display: flex; align-items: center;border:1px solid white; background-color: rgb(31,31,31); border-radius: 1vmax; margin-bottom: 0.5em;transition:all ease 1s;");
@@ -149,6 +163,7 @@ function filterdiv(task) {
             para.style.textDecoration = "none";
             task.status = "Pending";
         }
+        localStorage.setItem("todo", JSON.stringify(tskdata))
     };
 
     cross.onclick = function () {
@@ -157,6 +172,7 @@ function filterdiv(task) {
         tskdata.forEach((elem, index) => {
             elem.id = index;
         });
+        localStorage.setItem("todo", JSON.stringify(tskdata))
     };
 
     edit.onclick = function () {
@@ -165,5 +181,6 @@ function filterdiv(task) {
             para.textContent = newText; // Use textContent for safety
             task.msg = newText;
         }
+        localStorage.setItem("todo", JSON.stringify(tskdata))
     };
 }
