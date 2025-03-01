@@ -98,6 +98,7 @@ function create(ltask) {
 
     edit.addEventListener("click", () => {
         let taskToEdit = tskdata.find(t => t.msg === para.innerText);
+        console.log(taskToEdit);
         if (taskToEdit) {
             let newText = prompt("Edit New Job =", taskToEdit.msg);
             if (newText !== null && newText.trim() !== "") {
@@ -138,7 +139,7 @@ search.addEventListener("input", () => {
         selectionfunc();
     } else {
         document.getElementById("list").innerHTML = "";
-        tskdata.filter(task => task.msg == search.value).forEach(task => {
+        tskdata.filter(task => task.msg.toLowerCase() == search.value.toLowerCase()).forEach(task => {
             create(task);
         })
     }
