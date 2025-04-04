@@ -66,13 +66,27 @@ function create(ltask) {
         tskdata.push(task);
         localStorage.setItem("todo", JSON.stringify(tskdata))
     }
-
-    if (ltask && ltask.status === "Completed") {
-        check.checked = true;
-        para.style.textDecoration = "line-through";
-        para.style.textDecorationColor = "rgb(224, 58, 16)";
-        para.style.textDecorationThickness = "30%";
+    else {
+        if (ltask) {
+            para.innerHTML = ltask.msg;
+            if (ltask.status === "Completed") {
+                check.checked = true;
+                para.style.textDecoration = "line-through";
+                para.style.textDecorationColor = "rgb(224, 58, 16)";
+                para.style.textDecorationThickness = "30%";
+            } else {
+                para.style.textDecoration = "none";
+                tskdata.find(t => t.msg === para.innerText).status = "Pending";
+            }
+        }
     }
+    // if (ltask && ltask.status === "Completed") {
+    //     check.checked = true;
+    //     para.style.textDecoration = "line-through";
+    //     para.style.textDecorationColor = "rgb(224, 58, 16)";
+    //     para.style.textDecorationThickness = "30%";
+    // }
+
     check.addEventListener("click", checkfunc);
     function checkfunc() {
         if (check.checked) {
@@ -113,6 +127,7 @@ function create(ltask) {
 let selection = document.getElementById('select');
 console.log(selection.value);
 selection.addEventListener("change", selectionfunc);
+
 function selectionfunc() {
     document.getElementById("list").innerHTML = "";
     if (selection.value == "All") {
