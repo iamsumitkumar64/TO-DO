@@ -9,6 +9,14 @@ document.getElementById("area").addEventListener("keypress", function (event) {
         document.getElementById("area").value = "";
     }
 });
+document.getElementById('btn').addEventListener('click', () => {
+    if (document.getElementById("area").value == "") {
+        window.alert("Input Field is Empty");
+    } else {
+        create();
+    }
+    document.getElementById("area").value = "";
+})
 
 let prev_data = [];
 prev_data = JSON.parse(localStorage.getItem("todo"));
