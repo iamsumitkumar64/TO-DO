@@ -84,7 +84,7 @@ function create(ltask) {
                 para.style.textDecorationThickness = "30%";
             } else {
                 para.style.textDecoration = "none";
-                tskdata.find(t => t.msg === para.innerText).status = "Pending";
+                //tskdata.find(t => t.msg === para.innerText).status = "Pending";
             }
         }
     }
@@ -158,11 +158,12 @@ function selectionfunc() {
 let search = document.getElementById('search');
 search.addEventListener("input", () => {
     if (search.value == "") {
-        selection.value == "All";
+        selection.value = "All";
         selectionfunc();
     } else {
         document.getElementById("list").innerHTML = "";
-        tskdata.filter(task => task.msg.toLowerCase() == search.value.toLowerCase()).forEach(task => {
+        const query = search.value.toLowerCase();
+        tskdata.filter(task => task.msg.toLowerCase().includes(query)).forEach(task => {
             create(task);
         })
     }
